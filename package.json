@@ -3,21 +3,28 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --port 3000",
+    "dev:admin": "cross-env AVYORA_APP=admin NEXT_PUBLIC_AVYORA_APP=admin next dev --port 3001",
+    "dev:all": "concurrently -n store,admin -c cyan,magenta \"next dev --port 3000\" \"cross-env AVYORA_APP=admin NEXT_PUBLIC_AVYORA_APP=admin next dev --port 3001\"",
     "build": "next build",
     "start": "next start",
     "lint": "eslint"
   },
   "dependencies": {
+    "jspdf": "^4.2.1",
+    "lucide-react": "^1.32.0",
     "next": "16.3.1",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "concurrently": "^10.0.5",
+    "cross-env": "^10.1.0",
     "eslint": "^9",
     "eslint-config-next": "16.3.1",
     "tailwindcss": "^4",
